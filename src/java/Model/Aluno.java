@@ -5,42 +5,66 @@
  */
 package Model;
 
+import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  *
  * @author bruno.rosario
  */
-public class Aluno {
+@Entity
+@Table(name = "aluno")
+public class Aluno implements Serializable {
+
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
     private int matricula;
     private String nome;
     private String celular;
 
-    public Aluno(int matricula, String nome, String celular){
-            this.setMatricula(matricula);
-            this.nome = nome;
-            this.celular = celular;
+    public Aluno(int matricula, String nome, String celular) {
+        this.setMatricula(matricula);
+        this.nome = nome;
+        this.celular = celular;
     }
 
-    public void setMatricula(int matricula){
-            this.matricula = matricula;
+    public Long getId() {
+        return id;
     }
 
-    public int getMatricula(){
-            return this.matricula;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public void setNome(String nome){
-            this.nome = nome;
+    public void setMatricula(int matricula) {
+        this.matricula = matricula;
     }
 
-    public String getNome(){
-            return this.nome;
+    public int getMatricula() {
+        return this.matricula;
     }
 
-    public void setCelular(String celular){
-            this.celular = celular;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public String getCelular(){
-            return this.celular;
+    public String getNome() {
+        return this.nome;
+    }
+
+    public void setCelular(String celular) {
+        this.celular = celular;
+    }
+
+    public String getCelular() {
+        return this.celular;
     }
 }
